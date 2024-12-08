@@ -1,11 +1,60 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
+import Welcome from "../components/Welcome.astro";
+import Layout from "../layouts/Layout.astro";
+import ReactComponent from "../components/ReactComponent";
+import "@/styles/globals.css";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import NavigationMenu from "../components/NavigationMenu";
+import Home from "../app/dashboard/page";
+import Page from './page.astro'
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Counter from "../components/Counter";
+const someProps = {
+	count: 0,
+};
 ---
 
 <Layout>
+	<!-- <Button onClick={()=>{console.log(111111111111)}}>Hello World</Button> -->
+	<!-- <Badge>Badge</Badge>
 	<Welcome />
+	<ReactComponent /> -->
+	<!-- <Welcome /> -->
+	<!-- <ReactComponent  client:visible/> -->
+	<!-- <NavigationMenu client:visible/> -->
+	
+	<div class="flex  flex-row">
+		<div >
+			<!-- <Home client:visible/> -->
+			<div cms:replace="/html/components/header :: #fragment"></div>
+
+		</div>
+		<div class="grow">
+			<header class="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+				<div class="flex items-center gap-2 px-4">
+				  <!-- <SidebarTrigger class="-ml-1" />
+				  <Separator orientation="vertical" class="mr-2 h-4" /> -->
+				  <NavigationMenu client:visible/>
+				
+			   
+				</div>
+			  </header>
+			  
+			  <div class="flex flex-1 flex-col gap-4 p-4 pt-0">
+			  <!-- {children} -->
+				<div class="grid auto-rows-min gap-4 md:grid-cols-3">
+				  
+				  <div class="aspect-video rounded-xl bg-muted/50" />
+				  <div class="aspect-video rounded-xl bg-muted/50" />
+				  <div class="aspect-video rounded-xl bg-muted/50" />
+				</div>
+				<div class="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
+			  </div>
+		</div>
+	</div>
+	<!-- <Counter {...someProps} client:visible>
+		<h1>Hello, React!</h1>
+	</Counter> -->
 </Layout>
